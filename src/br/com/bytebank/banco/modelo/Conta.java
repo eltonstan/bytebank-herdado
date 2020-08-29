@@ -6,7 +6,7 @@ package br.com.bytebank.banco.modelo;
  * @author elton
  *
  */
-public abstract class Conta {
+public abstract class Conta implements Comparable<Conta> {
 
 	protected double saldo;
 	private int agencia;
@@ -29,10 +29,11 @@ public abstract class Conta {
 	public abstract void deposita(double valor);
 
 	/**
-	* Valor precisa ser menor ou igual ao saldo
-	* @param valor 
-	* @throws SaldoInsuficienteException
-	*/
+	 * Valor precisa ser menor ou igual ao saldo
+	 * 
+	 * @param valor
+	 * @throws SaldoInsuficienteException
+	 */
 	public boolean saca(double valor) {
 		if (this.saldo >= valor) {
 			this.saldo -= valor;
@@ -90,26 +91,31 @@ public abstract class Conta {
 	public static int getTotal() {
 		return Conta.total;
 	}
-	
+
 	@Override
 	public String toString() {
-	    return "Numero: " + this.numero + ", Agencia: " + this.agencia;
+		return "Numero: " + this.numero + ", Agencia: " + this.agencia;
 	}
-	
+
 	@Override
-	public boolean equals(Object ref){
+	public boolean equals(Object ref) {
 
-	    Conta outra = (Conta) ref;
+		Conta outra = (Conta) ref;
 
-	    if(this.agencia != outra.agencia){
-	        return false;
-	    }
+		if (this.agencia != outra.agencia) {
+			return false;
+		}
 
-	    if(this.numero != outra.numero){
-	        return false;
-	    }
+		if (this.numero != outra.numero) {
+			return false;
+		}
 
-	    return true;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Conta outra) {
+		return Double.compare(this.saldo, outra.saldo);
 	}
 
 }

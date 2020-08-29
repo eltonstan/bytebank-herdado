@@ -1,6 +1,7 @@
 package br.com.bytebank.banco.teste;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TesteWrapperInteger {
@@ -13,7 +14,7 @@ public class TesteWrapperInteger {
         List<Integer> lista = new ArrayList<>();
         lista.add(idadeRef); //ok
         lista.add(primitivo); //autoboxing
-
+        
         int i1 = lista.get(0);  //unboxing
         Integer i2 = lista.get(1);  //ok
 
@@ -36,6 +37,6 @@ public class TesteWrapperInteger {
 
         System.out.println(Integer.SIZE); // 32 bits
         System.out.println(Integer.BYTES); //4 Bytes
-
+        
     }
 }
